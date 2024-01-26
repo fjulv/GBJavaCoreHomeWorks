@@ -1,5 +1,7 @@
 package lesson3;
 
+import java.util.ArrayList;
+
 /*
 1. Создать класс ”Сотрудник” с полями: ФИО, должность, телефон,
 зарплата, возраст
@@ -41,5 +43,13 @@ public class Main {
         for (Employee employee : employees) {
             employee.averageSalary(employees);
         }
+
+        Department department1 = new Department("Economic", 3);
+        Department department2 = new Department("Sales", 5);
+
+        ArrayList<Department> departments = new ArrayList<>();
+        departments.add(department1);
+        departments.add(department2);
+        Company company = new Company("TomskCompany", "Tomsk", 8, departments, employee1);
     }
 }
