@@ -24,30 +24,6 @@ public class Employee {
         this.departmentOfWork = departmentOfWork;
     }
 
-    public void increaseSalaryAfter45(Employee[] employees) {
-        for (Employee employee : employees) {
-            if (employee.getAge() > 45) {
-                employee.setSalary(employee.getSalary() + 5000);
-            }
-        }
-    }
-
-    public void increaseSalaryWithConditions(Employee[] employees, int age, int increaseSalary) {
-        for (Employee employee : employees) {
-            if (employee.getAge() >= age) {
-                employee.setSalary(employee.getSalary() + increaseSalary);
-            }
-        }
-    }
-
-    public static void staticIncreaseSalaryWithConditions(Employee[] employees, int age, int increaseSalary) {
-        for (Employee employee : employees) {
-            if (employee.getAge() >= age) {
-                employee.setSalary(employee.getSalary() + increaseSalary);
-            }
-        }
-    }
-
     public void averageAge(Employee[] employees) {
         double ageOfAll = 0;
         for (Employee employee : employees) {
@@ -103,3 +79,4 @@ public class Employee {
         System.out.printf("Employee{ fullName= %s, jobTitle= %s, phoneNumber= %s, salary= %d, age= %d", fullName, jobTitle, phoneNumber, salary, age);
     }
 }
+

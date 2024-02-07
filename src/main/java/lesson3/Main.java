@@ -1,8 +1,5 @@
 package lesson3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
 1. Создать класс ”Сотрудник” с полями: ФИО, должность, телефон,
 зарплата, возраст
@@ -19,6 +16,16 @@ import java.util.List;
 8. Написать методы (принимающие на вход массив сотрудников),
 вычисляющие средний возраст и среднюю зарплату сотрудников, вывести
 результаты работы в консоль.
+
+ДЗ:
+
+1. Написать компаратор - метод внутри класса сотрудника, сравнивающий сотрудников по произвольному параметру.
+(Код пишется на основе задачек из презентации.)
+2. Опишите класс руководителя, наследник от сотрудника.
+Перенесите статический метод повышения зарплаты в класс руководителя, модифицируйте метод таким образом,
+чтобы он мог поднять заработную плату всем, кроме руководителей (использовать instanceof).
+В основной программе создайте руководителя и поместите его в общий массив сотрудников.
+Повысьте зарплату всем сотрудникам и проследите, чтобы зарплата руководителя не повысилась.
  */
 public class Main {
     public static void main(String[] args) {
@@ -37,9 +44,9 @@ public class Main {
         Employee employee3 = new Employee("Sidor Sidorov", "manager", "+3729999999999", 40000, 26);
         Employee employee4 = new Employee("Katya Katina", "cashier", "+78888888888", 20000, 45);
         Employee employee5 = new Employee("Pola Polomoevna", "cleaner", "+78899994444", 10000, 68);
+        Employee head = new HeadOfCompany("Начальник всех начальников", "chief", "+19928457854", 1000000, 50);
 
-
-        Employee[] employees = new Employee[]{employee1, employee2, employee3, employee4, employee5};
+        Employee[] employees = new Employee[]{employee1, employee2, employee3, employee4, employee5, head};
 
         branch1.addDepartment(department1);
 
@@ -60,5 +67,14 @@ public class Main {
             }
         }
         System.out.println(countEmployeeOfDepartment);
+
+        EmployeesCompareToSalary employeesCompareToSalary = new EmployeesCompareToSalary();
+        employeesCompareToSalary.compareToSalary(employee1, employee4);
+
+        HeadOfCompany.staticIncreaseSalaryWithConditions(employees, 20, 5000);
+
+        for (Employee e : employees) {
+            System.out.println(e.getFullName() + " " + e.getSalary());
+        }
     }
 }

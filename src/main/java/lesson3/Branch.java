@@ -9,7 +9,7 @@ public class Branch extends Company {
     private Company company;
     private List<Employee> listOfBranchEmployees;
 
-    public Branch(String branchName, int empCount, Company company){
+    public Branch(String branchName, int empCount, Company company) {
         listOfBranchEmployees = new ArrayList<Employee>();
         this.company = company;
         setName(branchName);
@@ -20,7 +20,6 @@ public class Branch extends Company {
     public Company getCompany() {
         return company;
     }
-
 
 
     public List<Employee> getListOfBranchEmployees() {
@@ -49,3 +48,4 @@ public class Branch extends Company {
                 '}';
     }
 }
+
