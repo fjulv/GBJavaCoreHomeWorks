@@ -1,6 +1,7 @@
 package lesson3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 1. Создать класс ”Сотрудник” с полями: ФИО, должность, телефон,
@@ -22,34 +23,42 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+        Company company = new Company();
+        Branch branch1 = new Branch("Branch1", 20, company);
+        Branch branch2 = new Branch("Branch2", 5, company);
+
+        company.setName("TomskCompany");
+
+
+        Department department1 = new Department("Economic");
+        Department department2 = new Department("Sales");
         Employee employee1 = new Employee("Petr Petrov", "manager", "+79999999999", 30000, 35);
         Employee employee2 = new Employee("Ivan Ivanon", "director", "+19999999999", 100000, 59);
         Employee employee3 = new Employee("Sidor Sidorov", "manager", "+3729999999999", 40000, 26);
         Employee employee4 = new Employee("Katya Katina", "cashier", "+78888888888", 20000, 45);
         Employee employee5 = new Employee("Pola Polomoevna", "cleaner", "+78899994444", 10000, 68);
 
+
         Employee[] employees = new Employee[]{employee1, employee2, employee3, employee4, employee5};
 
-        for (Employee employee : employees) {
-            employee.averageAge(employees);
+        branch1.addDepartment(department1);
+
+        employee1.setDepartmentOfWork(department1);
+        employee2.setDepartmentOfWork(department1);
+        employee3.setDepartmentOfWork(department2);
+        employee4.setDepartmentOfWork(department1);
+        employee5.setDepartmentOfWork(department2);
+
+
+        branch1.getListOfBranchEmployees().add(employee1);
+        branch1.getListOfBranchEmployees().add(employee2);
+
+        int countEmployeeOfDepartment = 0;
+        for (Employee e : branch1.getListOfBranchEmployees()) {
+            if (e.getDepartmentOfWork().equals(department1)) {
+                countEmployeeOfDepartment++;
+            }
         }
-
-        for (Employee employee : employees) {
-            employee.averageSalary(employees);
-        }
-
-        Employee.staticIncreaseSalaryWithConditions(employees, 36, 10000);
-
-        for (Employee employee : employees) {
-            employee.averageSalary(employees);
-        }
-
-        Department department1 = new Department("Economic", 3);
-        Department department2 = new Department("Sales", 5);
-
-        ArrayList<Department> departments = new ArrayList<>();
-        departments.add(department1);
-        departments.add(department2);
-        Company company = new Company("TomskCompany", "Tomsk", 8, departments, employee1);
+        System.out.println(countEmployeeOfDepartment);
     }
 }

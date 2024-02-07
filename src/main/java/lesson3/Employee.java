@@ -6,6 +6,7 @@ public class Employee {
     private String phoneNumber;
     private int salary;
     private int age;
+    private Department departmentOfWork;
 
     public Employee(String fullName, String jobTitle, String phoneNumber, int salary, int age) {
         this.fullName = fullName;
@@ -15,6 +16,13 @@ public class Employee {
         this.age = age;
     }
 
+    public Department getDepartmentOfWork() {
+        return departmentOfWork;
+    }
+
+    public void setDepartmentOfWork(Department departmentOfWork) {
+        this.departmentOfWork = departmentOfWork;
+    }
 
     public void increaseSalaryAfter45(Employee[] employees) {
         for (Employee employee : employees) {
